@@ -15,11 +15,11 @@ func TestBuildSSHEnvironment(t *testing.T) {
 	}
 
 	required := map[string]string{
-		"SSH_ASKPASS_REQUIRE":      "force",
-		askpass.EnvAskpassMode:     "1",
-		askpass.EnvHost:            "example.com",
-		askpass.EnvUser:            "admin",
-		askpass.EnvVaultPath:       "/tmp/test-vault.enc",
+		"SSH_ASKPASS_REQUIRE":  "force",
+		askpass.EnvAskpassMode: "1",
+		askpass.EnvHost:        "example.com",
+		askpass.EnvUser:        "admin",
+		askpass.EnvVaultPath:   "/tmp/test-vault.enc",
 	}
 
 	envMap := envToMap(env)
