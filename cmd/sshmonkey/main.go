@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"os"
 
+	"sshmonkey/internal/askpass"
+
 	"github.com/spf13/cobra"
 )
 
@@ -28,6 +30,15 @@ func init() {
 }
 
 func main() {
+	// Check askpass mode FIRST, before any cobra initialization.
+	// This ensures fast response when SSH invokes us as SSH_ASKPASS.
+	if askpass.IsAskpassMode() {
+		if err := askpass.RunAskpass(); err != nil {
+			os.Exit(1)
+		}
+		os.Exit(0)
+	}
+
 	if err := rootCmd.Execute(); err != nil {
 		os.Exit(1)
 	}
