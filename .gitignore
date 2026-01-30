@@ -1,2 +1,3 @@
 /sshmonkey
 *.exe
+.sisyphus/
